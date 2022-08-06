@@ -9,6 +9,7 @@ import Post from "../components/post/post";
 import PostScreen from "../screens/postScreen/postScreen";
 import SettingsScreen from "../screens/settings/settings";
 import UserSettingsScreen from "../screens/settings/userSettings";
+import Tasks from "../screens/tasks/tasks";
 
 const Stack = createStackNavigator();
 
@@ -26,7 +27,7 @@ const Router = (props) => {
 
         <Stack.Screen
           name={"Destination Search"}
-          component={DestinationSearch}
+          component={Tasks}
           options={{
             title: "Search your destination"
           }}

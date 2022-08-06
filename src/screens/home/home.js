@@ -6,17 +6,15 @@ import { useNavigation } from '@react-navigation/core';
 
 
 const HomeScreen = (props) => {
-
+//'#89a365' pale green
     const navigation = useNavigation();
     return (
-        <View>
+        <View style={{backgroundColor:'#ffffff', height:'100%'}}>
              {/* Search bar */}
             
 
 
-                <ImageBackground 
-                source={require('../../../assets/images/wallpaper.jpg')} 
-                style={styles.image}>
+
                      <Pressable style={styles.searchButton} onPress={() => console.log( "Explore button clicked")}>
             
             <Fontisto name='search' size={25} color={'#f15454'} />
@@ -30,7 +28,7 @@ const HomeScreen = (props) => {
                 <Pressable style={styles.button} onPress={() => navigation.navigate("Destination Search")}>
                     <Text style={styles.buttonText}>Explore nearby stays</Text>
                     </Pressable>
-                </ImageBackground>
+               
         </View>
     );
 };

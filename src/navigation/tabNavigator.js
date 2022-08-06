@@ -10,20 +10,33 @@ import DestinationSearch from "../screens/destinationSearch/destinationSearch";
 import ExploreNavigator from "./exploreNavigator";
 import SettingsScreen from "../screens/settings/settings";
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { View } from "react-native";
+import Tasks from "../screens/tasks/tasks";
 
 const Tab = createMaterialBottomTabNavigator();
 
-//const Tab = createBottomTabNavigator();
+const style = {
+  padding:50,
+  backgroundColor:'red'
+}
 
 const TabNavigator = (props) => {
     return (
-        <Tab.Navigator 
-        screenOptions={{
-            tabBarActiveTintColor: "#f15454",
+        <Tab.Navigator
+        activeColor='white'
+        inactiveColor='#d5dec1'
+        barStyle={{
+          backgroundColor: '#89a365',
+          position: 'absolute',
+          overflow: 'hidden',
+          borderRadius: 30,
+          marginBottom: 10,
+          marginHorizontal:4
         }}>
         <Tab.Screen
           name={'Garden'}
           component={ExploreNavigator}
+          style={{backgroundColor:'red'}}
           options={{
               headerShown:false,
             tabBarIcon: ({color}) => (
@@ -33,7 +46,7 @@ const TabNavigator = (props) => {
         />
         <Tab.Screen
           name={'Tasks'}
-          component={DestinationSearch}
+          component={Tasks}
           options={{
             tabBarIcon: ({color}) => (
               <FontAwesome5 name="tasks" size={25} color={color} />
@@ -68,6 +81,7 @@ const TabNavigator = (props) => {
           }}
         />
       </Tab.Navigator>
+
     );
 };
 

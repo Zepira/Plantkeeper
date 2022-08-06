@@ -27,21 +27,9 @@ const style={
         padding:10
     },
     cardTitle:{
-        fontSize:12,
         fontFamily: 'helvetica',
         fontWeight:'bold'
     },
-    cardContent:{
-
-        fontSize:12,
-        fontFamily: 'helvetica'
-    },
-    list:{
-        marginBottom: -30
-    },
-    listIcon:{
-        marginRight:-5
-    }
 }
 
 
@@ -49,28 +37,36 @@ const style={
 const Tasks = (props) => {
     //'#89a365' pale green
     const navigation = useNavigation();
+    const [taskList, setTaskList] = React.useState(tasks);
+
+    const checkedHandler = (completed, taskIndex, subtaskIndex) => {
+
+        setTaskList((prev) => {
+
+            let newState = { ...prev };
+
+            newState[taskIndex].subTasks[subtaskIndex].completed = !completed;
+          
+            return newState;
+        });
+    };
 
     return (
         <ScrollView>
-           
-            {tasks.map(task => (
+            {tasks.map((task, taskIndex) => (
                 <Card style={style.card} key={task.id}>
                     <Card.Title  titleStyle={style.cardTitle} title={task.taskName} />
                     <Card.Content style={style.cardContent}>
-                        {task.subTasks.map(subtask => (
-                           <TouchableRipple key={subtask.id}  >
-                           <View style={styles.row}>
-                             <Paragraph>{subtask.description}</Paragraph>
-                             <View pointerEvents="none">
-                               <Checkbox
+                        {task.subTasks.map((subtask, subtaskIndex) => (
+                               <Checkbox.Item
+                                key={subtask.id}
                                  color='#89a365'
+                                 label={subtask.description}
+                                 position='leading'
                                  status={subtask.completed ? 'checked' : 'unchecked'}
+                                 onPress={() => checkedHandler(subtask.completed, taskIndex, subtaskIndex)}
                                />
-                             </View>
-                           </View>
-                         </TouchableRipple>
-
-
+                            
                         ))}  
                     </Card.Content>
                 </Card>

@@ -15,7 +15,7 @@ export default [
       },
       {
         id: '2',
-        description: 'herbs',
+        description: 'herbs and words and words and words and words and words and words and words and words and words and words and words and words and words ',
         completed: false
       }
     ]

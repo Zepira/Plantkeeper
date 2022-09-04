@@ -10,6 +10,7 @@ import PostScreen from "../screens/postScreen/postScreen";
 import SettingsScreen from "../screens/settings/settings";
 import UserSettingsScreen from "../screens/settings/userSettings";
 import Tasks from "../screens/tasks/tasks";
+import Garden from "../screens/garden/garden";
 
 const Stack = createStackNavigator();
 
@@ -17,11 +18,18 @@ const Router = (props) => {
     return (
         <NavigationContainer>
             <Stack.Navigator>
-        <Stack.Screen
-          name={"Home"}
+            <Stack.Screen
+          name={"Welcome Screen"}
           component={TabNavigator}
           options={{
             headerShown: false,
+          }}
+        />
+          <Stack.Screen
+          name={"Home"}
+          component={HomeScreen}
+          options={{
+            title: "Home"
           }}
         />
 
@@ -31,6 +39,11 @@ const Router = (props) => {
           options={{
             title: "Search your destination"
           }}
+        />
+
+<Stack.Screen
+          name={"Garden"}
+          component={Garden}
         />
 
         <Stack.Screen

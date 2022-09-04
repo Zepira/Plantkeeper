@@ -12,6 +12,7 @@ import SettingsScreen from "../screens/settings/settings";
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { View } from "react-native";
 import Tasks from "../screens/tasks/tasks";
+import Garden from "../screens/garden/garden";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -33,14 +34,12 @@ const TabNavigator = (props) => {
           marginBottom: 10,
           marginHorizontal:4
         }}>
-        <Tab.Screen
-          name={'Garden'}
-          component={ExploreNavigator}
-          style={{backgroundColor:'red'}}
+          <Tab.Screen
+          name={'Home'}
+          component={HomeScreen}
           options={{
-              headerShown:false,
             tabBarIcon: ({color}) => (
-              <FontAwesome name="leaf" size={25} color={color} />
+              <FontAwesome5 name="home" size={25} color={color} />
             ),
           }}
         />
@@ -53,6 +52,17 @@ const TabNavigator = (props) => {
             ),
           }}
         />
+         <Tab.Screen
+          name={'Garden'}
+          component={Garden}
+          style={{backgroundColor:'red'}}
+          options={{
+              headerShown:false,
+            tabBarIcon: ({color}) => (
+              <FontAwesome name="leaf" size={25} color={color} />
+            ),
+          }}
+        />
         <Tab.Screen
           name={'Log'}
           component={HomeScreen}
@@ -62,7 +72,7 @@ const TabNavigator = (props) => {
             ),
           }}
         />
-        <Tab.Screen
+        {/* <Tab.Screen
           name={'Cook'}
           component={HomeScreen}
           options={{
@@ -70,7 +80,7 @@ const TabNavigator = (props) => {
               <FontAwesome name="spoon" size={25} color={color} />
             ),
           }}
-        />
+        /> */}
         <Tab.Screen
           name={'Settings'}
           component={SettingsScreen}
